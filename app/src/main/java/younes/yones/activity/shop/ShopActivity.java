@@ -1,20 +1,21 @@
-package younes.yones.activities.shop;
+package younes.yones.activity.shop;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import younes.yones.activities.shop.mvp.ShopModle;
-import younes.yones.activities.shop.mvp.ShopPersenter;
-import younes.yones.activities.shop.mvp.ShopView;
+import younes.yones.activity.shop.mvp.ShopModle;
+import younes.yones.activity.shop.mvp.ShopPersenter;
+import younes.yones.activity.shop.mvp.ShopView;
+import younes.yones.common.Confing;
 
 public class ShopActivity extends AppCompatActivity {
 
 
 	public static void start( Context context,String s) {
 		Intent intent = new Intent(context, ShopActivity.class);
-		intent.putExtra("KEY", s);
+		intent.putExtra( Confing.KEY, s);
 		context.startActivity(intent);
 	}
 
@@ -34,7 +35,7 @@ public class ShopActivity extends AppCompatActivity {
 
 
 
-		ShopPersenter persenter=new ShopPersenter(view,modle );
+		persenter=new ShopPersenter(view,modle );
 		persenter.onCreate();
 
 	}

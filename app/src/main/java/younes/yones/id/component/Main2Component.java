@@ -1,7 +1,7 @@
 package younes.yones.id.component;
 
 import dagger.Component;
-import younes.yones.MainActivity;
+import younes.yones.activity.main.MainActivity;
 import younes.yones.id.module.AdapterModule;
 import younes.yones.id.scope.Main2Scope;
 

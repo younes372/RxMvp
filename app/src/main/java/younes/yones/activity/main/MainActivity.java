@@ -1,4 +1,4 @@
-package younes.yones;
+package younes.yones.activity.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,13 +9,15 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
+import younes.yones.G;
+import younes.yones.R;
 import younes.yones.adapter.AdapterMain;
 import younes.yones.id.component.DaggerMain2Component;
 import younes.yones.id.component.Main1Component;
 import younes.yones.id.module.AdapterModule;
-import younes.yones.mvp.HomeModle;
-import younes.yones.mvp.HomePersenter;
-import younes.yones.mvp.HomeView;
+import younes.yones.activity.main.mvp.HomeModle;
+import younes.yones.activity.main.mvp.HomePersenter;
+import younes.yones.activity.main.mvp.HomeView;
 import younes.yones.networking.ApiService;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 		DaggerMain2Component.builder()
-				.main1Component(G.get( this ).getComponent() )
+				.main1Component( G.get( this ).getComponent() )
 				.adapterModule( new AdapterModule( this ) )
 				.build()
 				.Inject( this );

@@ -1,4 +1,4 @@
-package younes.yones.mvp;
+package younes.yones.activity.main.mvp;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,12 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.mindorks.butterknifelite.ButterKnifeLite;
 import com.mindorks.butterknifelite.annotations.BindView;
 
 import younes.yones.R;
+import younes.yones.activity.shop.ShopActivity;
 
 /**
  * Created by younes on 12/16/2017.
@@ -28,6 +28,7 @@ import younes.yones.R;
 	Button b;
 
 
+
 		public HomeView( @NonNull Context context ) {
 			super( context );
 			View view=inflate( context,R.layout.activity_main,this );
@@ -42,7 +43,7 @@ import younes.yones.R;
 			b.setOnClickListener( new OnClickListener( ) {
 				@Override
 				public void onClick( View v ) {
-					Toast.makeText( getContext(),s , Toast.LENGTH_SHORT ).show( );
+					ShopActivity.start( getContext(),s );
 
 				}
 			} );

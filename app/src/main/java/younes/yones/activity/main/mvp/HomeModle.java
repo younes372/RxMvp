@@ -1,4 +1,4 @@
-package younes.yones.mvp;
+package younes.yones.activity.main.mvp;
 
 import android.content.Context;
 
@@ -13,6 +13,7 @@ public class HomeModle {
 
 	public HomeModle( Context context  ) {
 		this.context = context;
+
 	}
 
 

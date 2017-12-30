@@ -2,7 +2,7 @@ package younes.yones.id.module;
 
 import dagger.Module;
 import dagger.Provides;
-import younes.yones.MainActivity;
+import younes.yones.activity.main.MainActivity;
 import younes.yones.id.scope.Main2Scope;
 
 /**

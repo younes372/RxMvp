@@ -1,4 +1,4 @@
-package younes.yones.activities.shop.mvp;
+package younes.yones.activity.shop.mvp;
 
 
 /**
@@ -18,6 +18,7 @@ public class ShopPersenter {
 
 	public void onCreate( ) {
 		setDataIntent();
+		setDataNet();
 	}
 
 
@@ -41,6 +42,17 @@ public class ShopPersenter {
 
 	public void setDataIntent(){
 		view.setData( modle.gitStringIntent() );
+	}
+
+	public void setDataNet(){
+		view.send( new ShopView.setOnClick( ) {
+			@Override
+			public void onclick( ) {
+				view.setDataEditeText( modle.getDataNet( view.getEditeText() ) );
+			}
+		} );
+
+
 	}
 
 

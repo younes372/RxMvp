@@ -12,7 +12,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import younes.yones.MainActivity;
+import younes.yones.activity.main.MainActivity;
 import younes.yones.R;
 import younes.yones.datamodel.DataSlider;
 
