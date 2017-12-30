@@ -10,6 +10,11 @@ import android.widget.FrameLayout;
 import com.mindorks.butterknifelite.ButterKnifeLite;
 import com.mindorks.butterknifelite.annotations.BindView;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import younes.yones.R;
 import younes.yones.activity.shop.ShopActivity;
 
@@ -35,11 +40,48 @@ import younes.yones.activity.shop.ShopActivity;
 
 			ButterKnifeLite.bind( this,view );
 
+			rxjava();
 
 		}
 
+	private void rxjava( ) {
 
-		public void onClickButton(final String s){
+		Observable<Integer> observable=Observable.just( 1,2,3 );
+
+		observable
+				.subscribeOn( Schedulers.io() )
+				.observeOn( AndroidSchedulers.mainThread() )
+				.subscribe( observer() );
+
+	}
+
+
+	public Observer<Integer> observer( ){
+		return new Observer< Integer >( ) {
+			@Override
+			public void onSubscribe( Disposable d ) {
+
+			}
+
+			@Override
+			public void onNext( Integer integer ) {
+
+			}
+
+			@Override
+			public void onError( Throwable e ) {
+
+			}
+
+			@Override
+			public void onComplete( ) {
+
+			}
+		};
+	}
+
+
+	public void onClickButton(final String s){
 			b.setOnClickListener( new OnClickListener( ) {
 				@Override
 				public void onClick( View v ) {
