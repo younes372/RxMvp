@@ -6,15 +6,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
+import com.jakewharton.rxbinding2.view.RxView;
 import com.mindorks.butterknifelite.ButterKnifeLite;
 import com.mindorks.butterknifelite.annotations.BindView;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.observers.DisposableObserver;
 import younes.yones.R;
 import younes.yones.activity.shop.ShopActivity;
 
@@ -23,7 +24,7 @@ import younes.yones.activity.shop.ShopActivity;
  */
 
 
-	public class HomeView extends FrameLayout{
+public class HomeView extends FrameLayout  {
 
 
 	@BindView( R.id.rececler_main )
@@ -33,36 +34,53 @@ import younes.yones.activity.shop.ShopActivity;
 	Button b;
 
 
+	@BindView( R.id.click )
+	Button click;
 
-		public HomeView( @NonNull Context context ) {
-			super( context );
-			View view=inflate( context,R.layout.activity_main,this );
 
-			ButterKnifeLite.bind( this,view );
+	public HomeView( @NonNull Context context ) {
+		super( context );
+		View view = inflate( context, R.layout.activity_main, this );
 
-			rxjava();
+		ButterKnifeLite.bind( this, view );
 
-		}
 
-	private void rxjava( ) {
-
-		Observable<Integer> observable=Observable.just( 1,2,3 );
-
-		observable
-				.subscribeOn( Schedulers.io() )
-				.observeOn( AndroidSchedulers.mainThread() )
-				.subscribe( observer() );
-
+		disposableObserver().dispose();
 	}
 
 
-	public Observer<Integer> observer( ){
+
+
+	public Observable<Object> onClickButton( ) {
+		return RxView.clicks( click );
+	}
+
+
+	public Observer< Integer > observer( ) {
 		return new Observer< Integer >( ) {
 			@Override
 			public void onSubscribe( Disposable d ) {
 
+
+			}
+			@Override
+			public void onNext( Integer integer ) {
+				Toast.makeText( getContext(), integer + "", Toast.LENGTH_SHORT ).show( );
+			}
+			@Override
+			public void onError( Throwable e ) {
+
 			}
 
+			@Override
+			public void onComplete( ) {
+
+			}
+		};
+	}
+
+	public DisposableObserver< Integer > disposableObserver( ) {
+		return new DisposableObserver< Integer >( ) {
 			@Override
 			public void onNext( Integer integer ) {
 
@@ -81,15 +99,29 @@ import younes.yones.activity.shop.ShopActivity;
 	}
 
 
-	public void onClickButton(final String s){
-			b.setOnClickListener( new OnClickListener( ) {
-				@Override
-				public void onClick( View v ) {
-					ShopActivity.start( getContext(),s );
 
-				}
-			} );
-		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void onClickButton( final String s ) {
+		b.setOnClickListener( new OnClickListener( ) {
+			@Override
+			public void onClick( View v ) {
+				ShopActivity.start( getContext( ), s );
+
+			}
+		} );
+	}
 
 
 }
